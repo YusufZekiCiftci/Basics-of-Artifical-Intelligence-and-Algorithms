@@ -1,10 +1,10 @@
 
-
+#HATALI ALPHA-BETA BUDAMASI ÖRNEĞİ.
 tree= [[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]]]
 root=0
 prun=0
 
-def childs(branch,depth,alpha,beta):
+def childrens(branch,depth,alpha,beta):
     global tree
     global root
     global prun
@@ -12,7 +12,7 @@ def childs(branch,depth,alpha,beta):
     
     for child in branch:
         if type(child) is list:
-            (n_alpha,n_beta)=childs(child, depth+1, alpha, beta)
+            (n_alpha,n_beta)=childrens(child, depth+1, alpha, beta)
             if depth%2==1:
                 beta=n_alpha if n_alpha<beta else beta
             else:
@@ -30,12 +30,12 @@ def childs(branch,depth,alpha,beta):
     if depth==root:
         tree=alpha if root==0 else beta
         return (alpha,beta)
-    #%%
+    
 def abp(in_tree=tree,begin=root,bott=-15,top=15):
     global tree
     global prun
     global root
-    (alpha,beta)=childs(tree, begin, bott, top)
+    (alpha,beta)=childrens(tree, begin, bott, top)
     if __name__=="__main__":
         print("(alpha, beta): ",alpha,beta)
         print("Result: ",tree)
